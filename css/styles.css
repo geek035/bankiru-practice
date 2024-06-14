@@ -1,0 +1,325 @@
+/* шрифты  */
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Medium.ttf);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 900;
+    font-style: normal;
+    src: url(../fonts/Roboto-Black.ttf);
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: normal;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+/* reset, fonts */
+
+:root {
+    font-family: Roboto;
+    font-size: 16px;
+    color: #162136; 
+
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+    
+*, ::after, ::before {
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    box-sizing: inherit;
+}
+    
+
+/* header */
+
+header {
+    width: 1440px;
+    height: 80px;
+    
+    display: flex;
+    justify-content: center;
+
+    background-color: white;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+
+    font-size: 14px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 1312px;
+}
+
+ul {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    gap: 32px;
+
+    width: 1000px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #162136;
+}
+
+/* main */
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 3037px;
+    
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    
+    justify-content: space-around;
+
+    width: 1440px;
+    height: calc(3037px - 88px);
+
+    background-color: #EEEEEE;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.frame-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 32px;
+
+    width: 1312px;
+}
+
+.frame-wrapper:first-child {
+    height: 341px;
+}
+
+.frame-text-box {
+    display: flex;
+    flex-wrap: wrap;
+    
+    width: 640px;
+    align-self: flex-start;
+
+    row-gap: 16px;
+
+    font-weight: 400;
+}
+
+/* Deposit card */
+
+.frame-cards-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.deposit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+
+    width: 304px;
+
+    padding: 32px 0 32px 0;
+
+    font-size: 14px;
+
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 16px 24px #16213629;
+}
+
+.bank-banner-wrapper {
+    width: 240px;
+
+    padding-bottom: 16px;
+}
+
+.bank-banner {
+    display: flex;
+    justify-content: space-between;
+
+    text-align: right;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+
+    padding-bottom: 32px;
+
+    justify-content: space-between;
+    width: 240px;
+}
+
+.info-box-row {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.info-box-row p:last-child {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.info-box-row:first-child p:last-child {
+    font-size: 24px;
+}
+
+.open-deposit {
+    width: 240px;
+    height: 48px;
+
+    border-radius: 8px;
+    background-color: #039BE5;
+
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+/* useful materials */
+
+.last-section {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.materials-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1312px;
+    height: 731.8px;
+
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 1px 8px #1621360D;
+}
+
+.materials {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 1252px;
+    height: 636px;
+}
+
+.materials-image-box {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 394.66px;
+    height: 393.8px;
+
+    border-bottom: 1px solid #ECEFF1;
+}
+
+.materials-image-box img {
+    width: 394px;
+    height: 250px;
+}
+
+.materials-text-box {
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    width: 394.66px;
+    height: 121px;
+    padding: 0px, 0px, 3,849.8px, 0px;
+
+    border-bottom: 1px solid #ECEFF1;
+}
+
+.materials-text-box-content {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+
+    height: 72px;
+}
+
+.materials h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.materials h4 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.materials-data {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* footer */
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1440px;
+    height: 88px;
+
+    background-color: #EBF5FF;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1312px;
+    height: 24px;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 583px;
+}
+
+.footer-links {
+    width: 266px;
+}
