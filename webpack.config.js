@@ -1,14 +1,19 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
 
 const config = {
-    entry: './src/index.js',
+    entry: {
+        main: './src/index.js',
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
@@ -20,7 +25,13 @@ const config = {
     plugins: [
         new MiniCSSExtractPlugin({
             filename: 'minifyCSS.css'
-        })
+        }),
+        new HtmlWebpackPlugin({
+            title: "Банки.ру",
+            template: path.resolve(__dirname, './src/template.html'),
+            filename: 'index.html',
+        }),
+        new CleanWebpackPlugin(),
     ],
     module: {
         rules: [
@@ -38,6 +49,7 @@ const config = {
     optimization: {
         minimizer: [
             new CSSMinimizerWebpackPlugin(),
+            new TerserWebpackPlugin()
         ],
     },
 };
