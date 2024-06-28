@@ -24,26 +24,47 @@ const config = {
     },
     plugins: [
         new MiniCSSExtractPlugin({
-            filename: 'minifyCSS.css'
+            filename: '[name].[hash].css'
         }),
         new HtmlWebpackPlugin({
             title: "Банки.ру",
             template: path.resolve(__dirname, './src/template.html'),
             filename: 'index.html',
+            minify: false,
         }),
         new CleanWebpackPlugin(),
     ],
     module: {
         rules: [
             {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: 'asset',
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/img/[name].[ext]'
+                },
+            },
+
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/fonts/[name].[ext]'
+                },
             },
 
             {
                 test: /\.css$/i,
-                use: [MiniCSSExtractPlugin.loader, "css-loader"],
-            }
+                use: [
+                    MiniCSSExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: true,
+                            sourceMap: true,
+                        }
+                    }
+                ],
+            },
         ],
     },
     optimization: {
