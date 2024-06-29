@@ -1,5 +1,3 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,7 +22,7 @@ const config = {
     },
     plugins: [
         new MiniCSSExtractPlugin({
-            filename: '[name].[hash].css'
+            filename: '[name].css'
         }),
         new HtmlWebpackPlugin({
             title: "Банки.ру",
@@ -53,16 +51,11 @@ const config = {
             },
 
             {
-                test: /\.css$/i,
+                test: /\.(sass|css|scss)$/i,
                 use: [
                     MiniCSSExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            url: true,
-                            sourceMap: true,
-                        }
-                    }
+                    "css-loader",
+                    "sass-loader",
                 ],
             },
         ],
@@ -70,7 +63,7 @@ const config = {
     optimization: {
         minimizer: [
             new CSSMinimizerWebpackPlugin(),
-            new TerserWebpackPlugin()
+            new TerserWebpackPlugin(),
         ],
     },
 };

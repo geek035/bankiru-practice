@@ -1,4 +1,4 @@
-import "./style.css"
+import "./styleSass.scss"
 
 document.querySelectorAll(".info-block__button").forEach(
     (but) => { but.addEventListener("click", (el) => {

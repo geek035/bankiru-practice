@@ -1,0 +1,690 @@
+/* ------------ fonts ------------ */
+
+@font-face {
+    font-family: "Roboto";
+    src: url(../fonts/Roboto-Medium.ttf) format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-weight: 900;
+    font-style: normal;
+    src: url(../fonts/Roboto-Black.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-weight: 400;
+    font-style: normal;
+    src: url(../fonts/Roboto-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-style: normal;
+    src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+/* ------------ Sass ------------ */
+
+$text-color: #162136;
+$page-color: #EEEEEE;
+$background-color: #ffffff;
+$shadow-box: 0px 16px 24px 0px #16213629, 0px -8px 16px 0px #1621360A, 0px 8px 16px 0px #16213614;
+$material-box-shadow: 0px 1px 8px 0px #1621360D;
+$materials-content-border-color: #ECEFF1;
+$data-color: #687082;
+$footer-background-color: #EBF5FF;
+
+@mixin flexContainer($justify: space-between, $wrap: nowrap, 
+        $align: center, $justifySelf: normal, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    justify-self: $justifySelf;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    align-items: $align;
+}
+
+/* ------------ root ------------ */
+
+:root {
+    font-family: Roboto;
+    font-size: 16px;
+    color: $text-color; 
+
+    --page-width: 1440;
+    --page-height: 3117;
+    --content-width: 1312;
+
+    --header-height: 80px;
+    --header-links-width: 1000;
+
+    --text-box-width: 640;
+    --text-box-image-width: 347.78;
+    --text-box-image-height: 300;
+
+    --info-block-width: 304;
+    --info-block-content-width: 240;
+    
+    --materials-block-height: 731;
+    --material-block-wrapper-width: 1252;
+    --material-block-wrapper-height: 636;
+    --materials-block-content-width: 394.66;
+    --materials-block-content-wrapper-image-height: 393.8;
+    --materials-block-content-image-height: 344.8;
+    --materials-block-content-wrapper-text-height: 121;
+    --materials-block-content-text-height: 72;
+    --materials-block-image-height: 250;
+    
+    --footer-height: 88px;
+    --footer-wrapper-width: 1324;
+    --footer-wrapper-height: 24;
+    --footer-info-box-width: 583;
+    --footer-icons-box-width: 266;
+    
+}
+
+/* ------------ reset ------------ */
+    
+*, ::after, ::before {
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    box-sizing: inherit;
+}
+
+/* ------------ header ------------ */
+
+.header {
+    @include flexContainer($justify: center);
+
+    width: 100%;
+    height: var(--header-height);
+    
+    background-color: white;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+
+    &__burger-menu {
+        display: none;
+    }
+
+    &__nav-panel {
+        @include flexContainer;
+
+        width: calc(100vw * calc(var(--content-width) / var(--page-width)));
+        max-width: calc(var(--content-width) * 1px);
+        //height: 80px;
+    }
+    
+    &__link {
+        font: {
+            size: 0.875rem;
+        }
+    }
+
+    &__list-links-wrapper {
+        @include flexContainer($justify: space-between);
+        width: 80%;
+
+    }
+    
+    &__list-links {
+        @include flexContainer($justify: space-around, $align: normal);
+
+        width: calc(100vw * var(--header-links-width) / var(--page-width));
+        max-width: calc(var(--header-links-width) * 1px);
+        
+        list-style: none;
+    }
+
+    &__list-icons {
+        @include flexContainer($justifySelf: end);
+
+        width: 7%;
+    }
+}
+
+/* ------------ link ------------ */
+
+.link {
+    font: {
+        family: "Roboto";
+        weight: 500;
+    };
+
+    text-decoration: none;
+    color: $text-color;
+}
+
+/* ------------ page ------------ */
+
+
+.page {
+    @include flexContainer($justify: space-around, $direction: column);
+    background-color: $background-color;
+}
+
+/* ------------ main ------------ */
+
+.main {
+    @include flexContainer($justify: space-around, $direction: column);
+
+    width: calc(100vw * var(--content-width) / var(--page-width));
+    height: calc(100vw * var(--page-height) / var(--page-width));
+    max-width: calc(var(--content-width) * 1px);
+    max-height: calc(var(--page-height) * 1px);
+}
+
+/* ------------ text-box ------------ */
+
+.text-box {
+    @include flexContainer($justify: start, $wrap: wrap, $align: normal);
+    gap: 1rem;
+
+    width: calc(100vw * var(--text-box-width) / var(--page-width));
+    max-width: calc(var(--text-box-width) * 1px);
+
+    &__header {
+        font: {
+            size: 2rem;
+            weight: 900;
+        }
+    }
+
+    &__image {
+        width: calc(100vw * var(--text-box-image-width) / var(--page-width));
+        height: calc(100vw * var(--text-box-image-height) / var(--page-width));
+        max-width: calc(var(--text-box-image-width) * 1px);
+        max-height: calc(var(--text-box-image-height) * 1px);
+    }
+
+    &__paragraph {
+        font: {
+            size: 1rem;
+            weight: 400;
+            family: "Open Sans";
+        }
+
+        &_bold {
+            font-weight: 700;
+        }
+
+        &__align_right {
+            text-align: right;
+        }
+
+        &_highlight {
+            font: {
+                size: 1.5rem;
+                weight: 700;
+            }
+        }
+    }
+}
+
+/* ------------ frame ------------ */
+
+.frame {
+    @include flexContainer($justify: space-between, $wrap: wrap, $align: normal);
+    
+    width: 100%;
+    gap: 2rem;
+}
+
+/* ------------ scroller ------------ */
+
+.scroller {
+    @include flexContainer($justify: space-around, $wrap: nowrap, $align: normal);
+    gap: 2rem;
+
+    width: 100%;
+}
+
+/* ------------ info-block ------------ */
+
+.info-block {
+    @include flexContainer($direction: column, $justify: start);
+    
+    width: calc(100vw * var(--info-block-width) / var(--page-width));
+    max-width: calc(var(--info-block-width) * 1px);
+    padding: 2rem 0 2rem 0;
+
+    font-size: 0.875rem;
+
+    border-radius: 1rem;
+    background-color: $background-color;
+    box-shadow: $shadow-box;
+
+    &__banner {
+        @include flexContainer($wrap: wrap);
+        gap: 1rem;
+
+        padding-bottom: 0.875rem;
+        width: calc(100vw * var(--info-block-content-width) / var(--page-width));
+        max-width: calc(var(--info-block-content-width) * 1px);
+    }
+
+    &__text-field {
+        @include flexContainer;
+        width: calc(100vw * var(--info-block-content-width) / var(--page-width));
+        max-width: calc(var(--info-block-content-width) * 1px);
+    }
+
+    &__list {
+        @include flexContainer($wrap: wrap, $justify: start, $align: normal);
+        width: calc(100vw * var(--info-block-content-width) / var(--page-width));
+        max-width: calc(var(--info-block-content-width) * 1px);
+        padding-bottom: 2rem;
+
+        gap: 1rem;
+        list-style: none;
+    }
+
+    &__hover {
+        width: calc(100vw * var(--info-block-content-width) / var(--page-width));
+        max-width: calc(var(--info-block-content-width) * 1px);
+    }
+
+    &__button {
+        width: calc(100vw * var(--info-block-content-width) / var(--page-width));
+        max-width: calc(var(--info-block-content-width) * 1px);
+        height: 3rem;
+
+        border-radius: 0.5rem;
+        background-color: #039BE5;
+
+        font-size: 1.125rem;
+        color: $page-color;
+    }
+}
+
+/* ------------ materials-block ------------ */
+
+.materials-block {
+    @include flexContainer($justify: center);
+
+    width: 100%;
+    height: calc(100vw * var(--materials-block-height) / var(--page-width));
+    max-height: calc(var(--materials-block-height) * 1px);
+    
+    border-radius: 1rem;
+    background-color: $background-color;
+    box-shadow: $material-box-shadow;
+
+    &__wrapper {
+        @include flexContainer($wrap: wrap);
+        width: calc(100vw * var(--material-block-wrapper-width) / var(--page-width));
+        height: calc(100vw * var(--material-block-wrapper-height) / var(--page-width));
+        max-width: calc(var(--material-block-wrapper-width) * 1px);
+        max-height: calc(var(--material-block-wrapper-height) * 1px);
+    }
+    
+    &__box {
+        @include flexContainer($direction: column, $align: normal);
+        width: calc(100vw * var(--materials-block-content-width) / var(--page-width));
+        height: calc(100vw * var(--materials-block-content-wrapper-image-height) / var(--page-width));
+        max-width: calc(var(--materials-block-content-width) * 1px);
+        max-height: calc(var(--materials-block-content-wrapper-image-height) * 1px);
+
+        border-bottom: 1px solid $materials-content-border-color;
+    }
+
+    &__box-wrapper {
+        @include flexContainer($direction: column, $align: normal);
+        height: calc(100vw * var(--materials-block-content-image-height) / var(--page-width));
+        max-height: calc(var(--materials-block-content-image-height) * 1px);
+    }
+
+    &__image {
+        width: 100%;
+        height: calc(100vw * var(--materials-block-image-height) / var(--page-width));
+        max-height: calc(var(--materials-block-image-height) * 1px);
+        
+    }
+
+    &__data-text {
+        font-size: 0.75rem;
+        color: $data-color;
+    }
+
+    &__header {
+        font-size: 1.5rem;
+        color: $text-color;
+
+        &_light {
+            font: {
+                size: 1rem;
+                weight: 400;
+            }
+        }
+    }
+    
+    
+    &__box-text-wrapper {
+        @include flexContainer;
+        height: calc(100vw * var(--materials-block-content-wrapper-text-height) / var(--page-width));
+        max-height: calc(var(--materials-block-content-wrapper-text-height) * 1px);
+    }
+
+    &__box-text {
+        @include flexContainer($wrap: wrap, $justify: start, $align: normal);
+        height: calc(100vw * var(--materials-block-content-wrapper-text-height) / var(--page-width));
+        max-height: calc(var(--materials-block-content-wrapper-text-height) * 1px);
+        gap: 0.5rem;
+    }
+}
+
+/* ------------ footer ------------ */
+
+.footer {
+    @include flexContainer($justify: center);
+
+    width: 100%;
+    height: var(--footer-height);
+
+    font: {
+        family: Roboto;
+        size: 0.875rem;
+        weight: 400;
+
+    }
+
+    color: $data-color;
+    background-color: $footer-background-color;
+
+    &__wrapper {
+        @include flexContainer($align: normal);
+        height: var(--footer-wrapper-height);
+        width: calc(100vw * var(--footer-wrapper-width) / var(--page-width));
+        max-width: calc(var(--footer-wrapper-width) * 1px);
+        
+    }
+
+    &__info-box {
+        @include flexContainer;
+        width: calc(100vw * var(--footer-info-box-width) / var(--page-width));
+        max-width: calc(var(--footer-info-box-width) * 1px);
+    }
+
+    &__list-icons {
+        @include flexContainer($justifySelf: end);
+        width: calc(100vw * var(--footer-info-box-width) / var(--page-width));
+        max-width: calc(var(--footer-info-box-width) * 1px);
+        
+        list-style: none;
+    }
+}
+
+/* ------------ tablet ------------ */
+
+@media screen and (max-width: 1200px) {
+
+    /* ------------ root ------------ */
+    :root {
+
+        --page-width: 768;
+        --page-height: 2789;
+        --content-width: 736;
+    
+        --header-height: 80px;
+        --header-links-width: 1;
+    
+        --text-box-width: var(--content-width);
+        --text-box-image-width: 230;
+        --text-box-image-height: 198.28;
+    
+        --info-block-width: 352;
+        --info-block-content-width: 304;
+        
+        --footer-height: 88px;
+        --footer-wrapper-width: var(--content-width);
+        --footer-wrapper-height: 24;
+        --footer-info-box-width: 583;
+        --footer-icons-box-width: 266;
+    }
+
+    /* ------------ header ------------ */
+    
+    .header {
+        &__nav-panel {
+            max-width: none;
+        }
+    
+        &__list-links-wrapper {
+            justify-content: center;
+        }
+    
+        &__list-icons {
+            width: auto;
+        }
+        
+        &__list-links {
+            display: none;
+        }
+        
+        &__burger-menu {
+            display: block;
+        }
+    
+        &__map-icon {
+            display: none;
+        }
+    }
+
+    /* ------------ main ------------ */
+
+    .main {
+        max-width: none;
+    }
+
+    /* ------------ scroller ------------ */
+
+    .scroller {
+        max-width: none;
+        flex-wrap: wrap;
+    }
+
+    /* ------------ frame ------------ */
+
+    .frame:first-child {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .frame:first-child .text-box {
+        width: calc((100vw * 385) / var(--page-width));
+    }
+
+    /* ------------ text-box ------------ */
+
+    .text-box {
+        max-width: none;
+
+        &__image {
+            max-width: none;
+            max-height: none;
+        }
+    
+        &__header {
+            font-size: 1.5rem;
+        }
+    }
+
+
+    /* ------------ info-block ------------ */
+
+    .info-block {
+        max-width: none;
+
+        &__banner {
+            max-width: none;
+        }
+        
+        &__list {
+            max-width: none;
+        }
+    
+        &__text-field {
+            max-width: none;
+        }
+    
+        &__hover {
+            max-width: none;
+        }
+    
+        &__button {
+            max-width: none;
+        }
+    }
+
+
+    /* ------------ materials-block ------------ */
+
+    .frame:last-child {
+        display: none;
+    }
+
+    /* ------------ footer ------------ */
+
+    .footer {
+        &__info-box .text-box__paragraph {
+            display: none;
+        }
+    
+        &__wrapper {
+            max-width: none;
+        }
+    }
+    
+}
+
+/* ------------ smartphone ------------ */
+
+@media screen and (max-width: 767px) {
+
+    :root {
+        --page-width: 320;
+        --page-height: 1683px;
+        --content-width: 288;
+
+        --header-height: 48px;
+
+        --text-box-width: var(--content-width);
+
+        --info-block-width: 212;
+        --info-block-content-width: 180;
+        
+        --footer-height: 48px;    
+    }    
+
+    /* ------------ page ------------ */
+
+    .page {
+        overflow-x: hidden;
+    }
+
+    /* ------------ main ------------ */
+
+    .main {
+        height: calc(var(--page-height) - 
+            var(--header-height) - var(--footer-height));
+        max-height: none;
+
+        width: 100%;
+    }
+
+    /* ------------ header ------------ */
+    .header {
+        width: 100vw;
+
+        &__nav-panel {  
+            height: var(--header-height);
+        }
+    }
+
+
+    /* ------------ text-box ------------ */
+    
+    .text-box {
+        width: 100%;
+        min-width: 288px;
+        gap: 0.5rem;
+
+        &__paragraph {
+            font-size: 0.75rem;
+        }
+
+        &__header {
+            font-size: 1.25rem;
+        }
+    
+        &__image {
+            display: none;
+        }
+    }
+
+    /* ------------ frame ------------ */
+
+    .frame {
+        width: calc(100vw * var(--content-width) / var(--page-width));
+        align-content: space-between;
+    }
+
+    /* ------------ scroller ------------ */
+
+    .scroller {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        
+        overflow-x: scroll;
+
+        padding: 2rem;
+        margin: -2rem;
+    }
+
+    .scroller::-webkit-scrollbar {
+        width: 0;
+    }
+
+    /* ------------ info-block ------------ */
+
+    .info-block {
+        padding: 1rem 0 1rem 0;
+
+        .text-box__paragraph {
+            font-size: 0.75rem;
+        }
+    
+        &__banner &__text-field {
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .text-box__paragraph_highlight,
+        .text-box__paragraph_bold {
+            font-size: 0.875rem;
+        }
+    }
+
+    /* ------------ footer ------------ */
+
+    .footer {
+        &__wrapper {
+            justify-content: center;
+        }
+    
+        &__list-icons {
+            display: none;
+        }
+    
+        &__info-box {
+            width: auto;
+        }
+    }
+}
