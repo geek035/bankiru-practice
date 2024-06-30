@@ -35,28 +35,34 @@ export const makeRequests = (urls, maxRequests) => {
         let countRequsts = 0,
             queuePromises = [];
 
-        const makeQueue = new Promise((resolve, reject) => {
-            while (countRequsts < maxRequests && urls.length) {
-                queuePromises.push(fetch(urls.pop()));
-                ++countRequsts;
-            }
-            if (!urls.length) {
-                reject()
-            } else {
-                resolve()
-            }
-        }).then( 
-            value => 
-            { 
-                Promise.race(queuePromises).then( 
-                    value => 
-                    {
-                        --countRequsts;
-                        makeRequests(urls, maxRequests);
-                    }, 
-                    reason => { reject(reason); } ); 
-            },
-            reason => { resolve(queuePromises.reverse()); }
-        );
+        makeQueue(urls, maxRequests);
+
+        function makeQueue(urls, maxRequests) {
+            new Promise((resolve, reject) => {
+                while (countRequsts < maxRequests && urls.length) {
+                    queuePromises.push(fetch(urls.pop()));
+                    ++countRequsts;
+                }
+                if (!urls.length) {
+                    reject()
+                } else {
+                    resolve()
+                }
+            }).then( 
+                value => 
+                { 
+                    Promise.race(queuePromises).then( 
+                        value => 
+                        {
+                            --countRequsts;
+                            makeQueue(urls, maxRequests);
+                        }, 
+                        reason => { 
+                            reject(reason); 
+                        }); 
+                },
+                reason => { resolve(queuePromises.reverse()); }
+            );
+        }
     });
 };

@@ -7,6 +7,14 @@ document.querySelectorAll(".info-block__button").forEach(
         } ); }
 );
 
+document.querySelector(".header .header__link").addEventListener("click", el => {
+    document.querySelector(".input-form").classList.add("input-form_shown");
+});
+
+document.querySelector(".input-form__exit-button").addEventListener("click", el => {
+    document.querySelector(".input-form").className = "input-form";
+});
+
 document.querySelector(".info-block__button").addEventListener("click", (el) => {
     const urls = [
         'https://jsonplaceholder.typicode.com/posts/1',
@@ -20,7 +28,7 @@ document.querySelector(".info-block__button").addEventListener("click", (el) => 
         'https://jsonplaceholder.typicode.com/posts/9',
         'https://jsonplaceholder.typicode.com/posts/10',
     ],
-    maxRequests = 10;
+    maxRequests = 5;
 
    makeRequests(urls, maxRequests).then(console.log); 
 });
