@@ -375,12 +375,17 @@ $footer-background-color: #EBF5FF;
     }
 
     &__button {
+        @include flexContainer($justify: center);
+        text-align: center;
+
         width: calc(100vw * var(--info-block-content-width) / var(--page-width));
         max-width: calc(var(--info-block-content-width) * 1px);
         height: 3rem;
 
         border-radius: 0.5rem;
         background-color: #039BE5;
+
+        text-decoration: none;
 
         font-size: 1.125rem;
         color: $page-color;
