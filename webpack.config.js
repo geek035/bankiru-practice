@@ -10,7 +10,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
     entry: {
-        main: './src/index.js',
+        main: './src/main.jsx',
     },
     output: {
         path: path.resolve(__dirname, 'docs'),
@@ -18,7 +18,11 @@ const config = {
     devServer: {
         open: true,
         host: 'localhost',
-        port: 8080,
+        port: 9000,
+        historyApiFallback: true,
+        static: {
+            directory: path.join(__dirname, "/"),
+        },
     },
     plugins: [
         new MiniCSSExtractPlugin({
@@ -26,7 +30,7 @@ const config = {
         }),
         new HtmlWebpackPlugin({
             title: "Банки.ру",
-            template: path.resolve(__dirname, './src/template.html'),
+            template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
             minify: false,
         }),
@@ -34,6 +38,17 @@ const config = {
     ],
     module: {
         rules: [
+            {
+                test: /\.jsx$/, // определяем тип файлов
+                exclude: /(node_modules)/,  // исключаем из обработки папку node_modules
+                use: {
+                    loader: "babel-loader",   // определяем загрузчик
+                    options: {
+                        cacheDirectory: true,
+                    },
+                },
+            },
+
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
                 type: 'asset/resource',

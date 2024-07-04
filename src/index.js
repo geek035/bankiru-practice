@@ -1,6 +1,12 @@
-import "./styleSass.scss"
 import { makeRequests } from "./makeRequests";
 import { cardsList, drawCards, drawing } from "./cardList";
+import { createRoot } from "react-dom/client";
+
+import "./styleSass.scss"
+import App from './App.jsx'
+
+
+
 
 drawCards(cardsList);
 
