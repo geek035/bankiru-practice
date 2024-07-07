@@ -1,78 +1,11 @@
-import React from 'react'
-import { frameTextList } from './constants'
-import { materialsBoxContentList } from './constants'
+import React from 'react';
+import { frameTextList } from './constants';
+import { cardsList } from './constants';
+import MaterialsBlock from './MaterialsBlock.jsx';
+import Scroller from './Scroller.jsx';
+import InputCardsInfoForm from './InputCardsInfoForm.jsx';
 
-const materialsContentElementsList = materialsBoxContentList.map(item =>
-    <MaterialsBox content={item} />
-)
-
-function MaterialsBlockContent({ content }) {
-    if (content.image !== null) {
-        return (
-            <>
-                <div>
-                    <img src={content.image} className="materials-block__image" />
-                    <h3 className="materials-block__header">{content.headerText}</h3>
-                </div>
-                <p className="materials-block__data-text">20.05.2024</p>
-            </>
-        );
-    } else {
-        return (
-            <>
-                <h4 
-                    className="materials-block__header materials-block__header_light">
-                    {content.headerText}
-                </h4>
-                <p className="materials-block__data-text">{content.date}</p>
-            </>
-        );
-    }
-}
-
-function MaterialsBox({ content }) {
-    if (content.image !== null) {
-        return (
-            <div className="materials-block__box">
-                <div className="materials-block__box-wrapper">
-                    <MaterialsBlockContent content={content} />
-                </div>
-            </div>
-        );
-    } else {
-        return (
-            <div className="materials-block__box
-                materials-block__box-text-wrapper">
-                <div className="materials-block__box-text">
-                    <MaterialsBlockContent content={content} />
-                </div>
-            </div>
-        );
-    }
-}
-
-function MaterialsBlock() {
-    return (
-        <div className="frame">
-            <div className="text-box">
-                <h2>Полезные материалы</h2>
-            </div>
-
-            <section className="materials-block">
-                <div className="materials-block__wrapper">
-                    { materialsContentElementsList }
-                </div>
-            </section>
-
-        </div>
-    )
-}
-
-function Scroller() {
-    return <p>Scroller</p>
-}
-
-function Frame({ isImageFrame, textBoxData }) {
+function Frame({ isImageFrame, textBoxData, idxScroller, countCards, cardsListObject }) {
     return ( 
         <section className="frame">
             <div className="text-box">
@@ -84,33 +17,57 @@ function Frame({ isImageFrame, textBoxData }) {
                     ? <img className="text-box__image"
                         src="../images/wallet.png"
                         alt="wallet" />
-                    : <Scroller />
+                    : <Scroller idxScroller={idxScroller}
+                        countCards={countCards}
+                        cardsListObject={cardsListObject} />   
                 }
             </>
         </section>
     );    
 }
 
-export default function MainComponent() {
+export default function MainComponent({inputCardForm, setInputCardForm}) {
+    const [cardsListObject, setCardsListObject] = React.useState({
+        lenght: 9,
+        list: cardsList,
+    });
+
+    console.log(cardsListObject);
+
     return (
         <main className="main">
+            {inputCardForm && <InputCardsInfoForm
+                setInputCardForm={ setInputCardForm }
+                cardListObject={cardsListObject}
+                setCardsListObject={setCardsListObject}/>}
             <Frame
                 isImageFrame={true}
-                textBoxData={frameTextList[0]} 
+                textBoxData={frameTextList[0]}             
             />
-            <Frame
-                isImageFrame={false}
-                textBoxData={frameTextList[1]} 
-            />
-            <Frame
-                isImageFrame={false}
-                textBoxData={frameTextList[2]} 
-            />
-            <Frame
-                isImageFrame={false}
-                textBoxData={frameTextList[3]} 
-            />
+            {createScrollerFramesList()}
             <MaterialsBlock />
         </main>
-    )
+    );
+
+    function createScrollerFramesList() {
+        let list = [],
+            counterCards = cardsListObject.lenght,
+            idx = 1;
+
+        while (counterCards > 0) {
+            list.push(
+                <Frame
+                    isImageFrame={false}
+                    textBoxData={frameTextList[idx]}
+                    idxScroller={idx-1}
+                    countCards={counterCards >= 4 ?  4 : counterCards }
+                    cardsListObject={cardsListObject}
+                    key={idx-1}
+                />
+            );
+            counterCards -= 4;
+            idx++;
+        }
+        return list;
+    }
 }

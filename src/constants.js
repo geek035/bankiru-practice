@@ -112,11 +112,104 @@ export const footerListUrl = [{
     url: "#",
     image: "../images/icon__vk.svg"
 }, {
-    id: 1,
+    id: 3,
     url: "#",
     image: "../images/icon__telegram.svg"
 }, {
-    id: 1,
+    id: 4,
     url: "#",
     image: "../images/icon__classmates.svg"
-}]
+}];
+
+export const cardsList = [
+    {
+      id: 1,
+      name: "Депозит №1",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "",
+    },
+  
+    {
+      id: 2,
+      name: "Депозит №2",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  
+    {
+      id: 3,
+      name: "Депозит №3",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  
+    {
+      id: 4,
+      name: "Депозит №4",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  
+    {
+      id: 5,
+      name: "Депозит №5",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  
+    {
+      id: 6,
+      name: "Депозит №6",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  
+    {
+      id: 7,
+      name: "Депозит №7",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  
+    {
+      id: 8,
+      name: "Депозит №8",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  
+    {
+      id: 9,
+      name: "Депозит №9",
+      logo: "../images/bank__logo.svg",
+      rate: 9.3,
+      period: 182,
+      amount: 10000000,
+      url: "https://example.com",
+    },
+  ];
+  

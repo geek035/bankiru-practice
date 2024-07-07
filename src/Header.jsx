@@ -9,15 +9,21 @@ const listLinks = listLinksData.map(item =>
     </li>
 );
 
-function HeaderListLinks() {
+function HeaderListLinks({ setInputCardForm }) {
     return (
         <ul className="header__list-links">
             {listLinks}
+            <button className="input-form__exit-button"
+                onClick={handleFormOpenClick}>Добавить карточки</button>
         </ul>
     );
+
+    function handleFormOpenClick() {
+        setInputCardForm(true);
+    }
 }
 
-export default function Header() {
+export default function Header({ setInputCardForm }) {
     return (
         <header className="header">
             <nav className="header__nav-panel">
@@ -29,7 +35,7 @@ export default function Header() {
                     <a href="#" className="header__logo">
                         <img src="../images/header__logo.svg" />
                     </a>
-                    <HeaderListLinks />
+                    <HeaderListLinks setInputCardForm={setInputCardForm} />
                 </div>
                 <div className="header__list-icons">
                     <a href="#" className="header__map-icon">

@@ -101,7 +101,8 @@ $footer-background-color: #EBF5FF;
 /* ------------ input-form ------------ */
 
 .input-form {
-    display: none;
+    @include flexContainer($direction: column);
+    
     position: absolute;
     top: 20vh;
     
@@ -113,10 +114,6 @@ $footer-background-color: #EBF5FF;
 
     background-color: $background-color;
     box-shadow: $shadow-box;
-
-    &_shown {
-        @include flexContainer($direction: column);
-    }
 
     &__header-wrapper {
         @include flexContainer;

@@ -4,11 +4,16 @@ import MainComponent from "./MainComponent.jsx"
 import Footer from './Footer.jsx'
 
 export default function App() {
+    const [inputCardForm, setInputCardForm] = React.useState(false);
+
     return (
-    <>
-        <Header />
-        <MainComponent />
-        <Footer />
-    </>
-    )
+        <>
+            <Header 
+                setInputCardForm={setInputCardForm}/>
+            <MainComponent
+                inputCardForm={inputCardForm}
+                setInputCardForm={setInputCardForm}/>
+            <Footer />
+        </>
+    );
 }
