@@ -1,0 +1,68 @@
+/* ------------ footer ------------ */
+
+.footer {
+    @include flexContainer($justify: center);
+
+    width: 100%;
+    height: var(--footer-height);
+
+    font: {
+        family: Roboto;
+        size: 0.875rem;
+        weight: 400;
+
+    }
+
+    color: $data-color;
+    background-color: $footer-background-color;
+
+    &__wrapper {
+        @include flexContainer($align: normal);
+        height: var(--footer-wrapper-height);
+        width: calc(100vw * var(--footer-wrapper-width) / var(--page-width));
+        max-width: calc(var(--footer-wrapper-width) * 1px);
+        
+    }
+
+    &__info-box {
+        @include flexContainer;
+        width: calc(100vw * var(--footer-info-box-width) / var(--page-width));
+        max-width: calc(var(--footer-info-box-width) * 1px);
+    }
+
+    &__list-icons {
+        @include flexContainer($justifySelf: end);
+        width: calc(100vw * var(--footer-icons-box-width) / var(--page-width));
+        max-width: calc(var(--footer-icons-box-width) * 1px);
+        
+        list-style: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .footer {
+        &__info-box .text-box__paragraph {
+            display: none;
+        }
+    
+        &__wrapper {
+            max-width: none;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer {
+        &__wrapper {
+            justify-content: center;
+        }
+    
+        &__list-icons {
+            display: none;
+        }
+    
+        &__info-box {
+            width: auto;
+        }
+    }
+}

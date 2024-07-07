@@ -1,0 +1,26 @@
+/* ------------ frame ------------ */
+
+.frame {
+    @include flexContainer($justify: space-between, $wrap: wrap, $align: normal);
+    
+    width: 100%;
+    gap: 2rem;
+}
+
+@media screen and (max-width: 1200px) {
+    .frame:first-child {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .frame:first-child .text-box {
+        width: calc((100vw * 385) / var(--page-width));
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .frame {
+        width: calc(100vw * var(--content-width) / var(--page-width));
+        align-content: space-between;
+    }
+}

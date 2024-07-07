@@ -1,5 +1,8 @@
-import React from "react"
+import React from "react";
 import { listLinksData } from "./constants";
+
+import "./styles/root.scss";
+import "./styles/header.scss";
 
 const listLinks = listLinksData.map(item => 
     <li key={item.id}>

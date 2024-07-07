@@ -1,0 +1,32 @@
+/* ------------ scroller ------------ */
+
+.scroller {
+    @include flexContainer($justify: space-around, $wrap: nowrap, $align: normal);
+    gap: 2rem;
+
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .scroller {
+        max-width: none;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .scroller {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        
+        overflow-x: scroll;
+
+        padding: 2rem;
+        margin: -2rem;
+    }
+
+    .scroller::-webkit-scrollbar {
+        width: 0;
+    }
+}

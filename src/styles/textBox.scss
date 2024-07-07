@@ -1,0 +1,81 @@
+/* ------------ text-box ------------ */
+
+.text-box {
+    @include flexContainer($justify: start, $wrap: wrap, $align: normal);
+    gap: 1rem;
+
+    width: calc(100vw * var(--text-box-width) / var(--page-width));
+    max-width: calc(var(--text-box-width) * 1px);
+
+    &__header {
+        font: {
+            size: 2rem;
+            weight: 900;
+        }
+    }
+
+    &__image {
+        width: calc(100vw * var(--text-box-image-width) / var(--page-width));
+        height: calc(100vw * var(--text-box-image-height) / var(--page-width));
+        max-width: calc(var(--text-box-image-width) * 1px);
+        max-height: calc(var(--text-box-image-height) * 1px);
+    }
+
+    &__paragraph {
+        font: {
+            size: 1rem;
+            weight: 400;
+            family: "Open Sans";
+        }
+
+        &_bold {
+            font-weight: 700;
+        }
+
+        &__align_right {
+            text-align: right;
+        }
+
+        &_highlight {
+            font: {
+                size: 1.5rem;
+                weight: 700;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .text-box {
+        max-width: none;
+
+        &__image {
+            max-width: none;
+            max-height: none;
+        }
+    
+        &__header {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .text-box {
+        width: 100%;
+        min-width: 288px;
+        gap: 0.5rem;
+
+        &__paragraph {
+            font-size: 0.75rem;
+        }
+
+        &__header {
+            font-size: 1.25rem;
+        }
+    
+        &__image {
+            display: none;
+        }
+    }
+}

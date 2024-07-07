@@ -10,7 +10,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
     entry: {
-        main: './src/main.jsx',
+        main: './src/index.jsx',
     },
     output: {
         path: path.resolve(__dirname, 'docs'),
