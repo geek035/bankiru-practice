@@ -4,7 +4,7 @@ import ReactDom from "react-dom/client"
 
 import "./styleSass.scss";
 
-const rootElement = document.body;
+const rootElement = document.querySelector(".page");
 const root = ReactDom.createRoot(rootElement);
 
 root.render(<App />);
