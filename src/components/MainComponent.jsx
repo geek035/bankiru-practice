@@ -1,6 +1,6 @@
 import React from 'react';
-import { frameTextList } from './constants';
-import { cardsList } from './constants';
+import { frameTextList } from '../constants.js';
+import { cardsList } from '../constants.js';
 import MaterialsBlock from './MaterialsBlock.jsx';
 import Scroller from './Scroller.jsx';
 import InputCardsInfoForm from './InputCardsInfoForm.jsx';

@@ -1,5 +1,5 @@
 import React from 'react'
-import { footerListUrl } from './constants'
+import { footerListUrl } from '../constants'
 
 const footerListElements = footerListUrl.map(item => 
     <li key={item.id}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { listLinksData } from "./constants";
+import { listLinksData } from "../constants";
 
 
 const listLinks = listLinksData.map(item => 

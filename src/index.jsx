@@ -1,5 +1,5 @@
 import React from 'react'
-import App from './App.jsx'
+import App from './components/App.jsx'
 import ReactDom from "react-dom/client"
 
 import "./styleSass.scss";

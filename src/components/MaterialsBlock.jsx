@@ -1,5 +1,5 @@
 import React from 'react';
-import { materialsBoxContentList } from './constants';
+import { materialsBoxContentList } from '../constants';
 
 const materialsContentElementsList = materialsBoxContentList.map(item =>
     <MaterialsBox key={item.id} content={item} />
